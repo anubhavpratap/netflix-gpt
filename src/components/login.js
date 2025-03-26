@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { addUser} from '../utils/userSlice';
 import { useDispatch } from 'react-redux';
 import {updateProfile } from "firebase/auth";
+import { LOGIN_BACKG, PROFILE_AVATAR} from '../utils/constants';
 
 const Login = () => {
   const [isSignInForm,setIsSignForm] = useState(true);
@@ -27,12 +28,11 @@ const Login = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 updateProfile(auth.currentUser, {
-                    displayName: name.current.value, photoURL: "https://assets.leetcode.com/users/pratap_anubhav/avatar_1737688960.png"
+                    displayName: name.current.value, photoURL: PROFILE_AVATAR
                   }).then(() => {
                     // Profile updated!
                     const {uid,email,displayName,photoURL} = auth.currentUser;
                     dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL,}));
-                    navigate("/browse");
                   }).catch((error) => {
                     // An error occurred
                     setErrorMessage(error.message);
@@ -47,7 +47,6 @@ const Login = () => {
             signInWithEmailAndPassword(auth, email.current.value,password.current.value)
             .then((userCredential) => {
                 const user = userCredential.user;
-                navigate("/browse");
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -63,7 +62,7 @@ const Login = () => {
         <Header/>
         <div className='absolute'>
             <img 
-                src='https://assets.nflxext.com/ffe/siteui/vlv3/f6e7f6df-6973-46ef-b98f-12560d2b3c69/web/IN-en-20250317-TRIFECTA-perspective_26f87873-6014-460d-a6fb-1d96d85ffe5f_medium.jpg'
+                src= {LOGIN_BACKG}
                 alt='login-back' />
         </div>
         <form onSubmit = {(e)=> e.preventDefault()} className='w-3/12 absolute p-12 bg-black my-60 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-90'>
