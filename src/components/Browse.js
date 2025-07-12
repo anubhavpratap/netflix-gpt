@@ -14,6 +14,9 @@ const Browse = () => {
   usePopularMovies();
   useTopRated();
   useUpcoming();
+  const movies = useSelector((store)=>store.movies?.nowPlayingMovies);
+  if(!movies) return;
+  const mainMovie = movies[0];
   return (
     <div>
       <Header/>
@@ -21,7 +24,7 @@ const Browse = () => {
         showGptSearch ? (<GptSearch/>):
                         (
                           <>
-                            <MainContainer/>
+                            <MainContainer movie={mainMovie}/>
                             <SecondaryContainer/>
                           </>
                           

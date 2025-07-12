@@ -1,7 +1,9 @@
 import Login from './login';
 import Browse from "./Browse";
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
-import { auth } from '../utils/firebase';
+//import { auth } from '../utils/firebase';
+import MovieDetail from './MovieDetail';
+import Watchlist from './WatchList';
 
 
 const Body = () => {
@@ -13,6 +15,15 @@ const Body = () => {
     {
       path: "/browse",
       element: <Browse/>,
+    },
+    {
+      path: "/movieDetails",
+      element: <MovieDetail/>,
+    },
+    {
+      path: "/watchlist",
+      element: <Watchlist/>
+
     },
   ]);
   

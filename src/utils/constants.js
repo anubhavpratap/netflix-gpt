@@ -2,7 +2,8 @@ export const LOGO_URL  = 'https://help.nflxext.com/helpcenter/OneTrust/oneTrust_
 export const PROFILE_AVATAR = "https://assets.leetcode.com/users/pratap_anubhav/avatar_1737688960.png";
 export const LOGIN_BACKG = 'https://assets.nflxext.com/ffe/siteui/vlv3/f6e7f6df-6973-46ef-b98f-12560d2b3c69/web/IN-en-20250317-TRIFECTA-perspective_26f87873-6014-460d-a6fb-1d96d85ffe5f_medium.jpg';
 
-export const API_OPTIONS = {
+
+export  const API_OPTIONS = {
     method: 'GET',
     headers: {
       accept: 'application/json',
@@ -17,3 +18,5 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "spanish", name: "Spanish" },
 ];
+
+export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
